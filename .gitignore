@@ -3,11 +3,14 @@
 node_modules/
 dist/
 npm-debug.log
+
+# 文件锁定和错误日志
 yarn-error.log
 yarn.lock
 package-lock.json
 
-# self
+# 自定义文件以及编辑器文件
 *.cmd
 .idea/
 .vscode/
+test/
