@@ -13,7 +13,7 @@ const getPostData = req => {
             postData += chunk.toString()
         })
         req.on('end', () => {
-            if(!postData) {
+            if (!postData) {
                 return resolve({})
             }
             return resolve(JSON.parse(postData))
@@ -21,7 +21,7 @@ const getPostData = req => {
     })
 }
 
-const serverHandle = (req, res) => {
+const serverHandle = async (req, res) => {
     // 设置返回格式
     res.setHeader('Content-type', 'application/json')
 
@@ -30,20 +30,16 @@ const serverHandle = (req, res) => {
     // 解析路由参数
     req.path = url[0]
     req.query = querystring.parse(url[1]) || ''
-    req.body = getPostData(req)
+    req.body = await getPostData(req)
 
 
     // 处理 user 路由
     const userData = handleUserRouter(req, res)
-    if (userData) {
-        return res.end(JSON.stringify(userData))
-    }
+    if (userData) return userData.then(result => res.end(JSON.stringify(result)))
 
     // 处理 blog 路由
     const blogData = handleBlogRouter(req, res)
-    if (blogData) {
-        return res.end(JSON.stringify(blogData))
-    }
+    if (blogData) return blogData.then(result => res.end(JSON.stringify(result)))
 
     // 未匹配路由, 返回 404
     res.writeHead(404, { 'Content-type': 'text/plain' })
