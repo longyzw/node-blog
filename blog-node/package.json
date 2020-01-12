@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "cross-env": "^6.0.3",
+    "mysql": "^2.17.1",
     "nodemon": "^2.0.2"
   }
 }
