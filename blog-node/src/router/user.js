@@ -12,9 +12,12 @@ const handleUserRouter = (req, res) => {
 }
 
 // 处理查询返回结果
-const getResult = res => {
-    let { code, data }  = res
-    return code === 0 ? new SuccessModel(code, data) : new ErrorModel(code, data)
+const getResult = result => {
+    return result.then(res => {
+        return new SuccessModel('0000', res[0])
+    }).catch(err => {
+        return new ErrorModel('0001', err)
+    })
 }
 
 module.exports = handleUserRouter
