@@ -1,7 +1,7 @@
 const env = process.env.NODE_ENV // 环境变量
 
 // 配置
-const MYSQL_CONFIG
+let MYSQL_CONFIG
 
 if (env === 'dev') {
     MYSQL_CONFIG = {
