@@ -1,46 +1,29 @@
+const exec = require('../db/mysql')
+
 // 获取文章列表
 const getList = query => {
     // 获取请求参数
-    const author = query.author || ''
-    const keyword = query.keyword || ''
-    // 先返回假数据
-    return {
-        code: '0000',
-        data: [
-            {
-                id: 1,
-                author: 'a',
-                title: 'A',
-                content: 'aaa',
-                createTime: 1578752491648
-            },
-            {
-                id: 2,
-                author: 'b',
-                title: 'B',
-                content: 'bbb',
-                createTime: 1578752518717
-            }
-        ]
+    const { author, keyword } = query
+    // 编写查询条件
+    let sql = `select * from articles where 1=1 `
+    if(author) {
+        sql += `and author='${author}' `
     }
+    if(keyword) {
+        sql += `and keyword='%${keyword}%' `
+    }
+    sql += `order by create_time desc;`
+    return exec(sql)
 }
 
 // 获取文章详情
 const getDetail = query => {
-    // 获取请求参数
-    const id = query.id || ''
-    // 先返回假数据
-    return {
-        code: '0000',
-        data: [
-            {
-                id: 1,
-                author: 'a',
-                title: 'A',
-                content: 'aaa',
-                createTime: 1578752491648
-            }
-        ]
+    const { id } = query
+    if(id) {
+        let sql = `select * from articles where id = ${id};`
+        return exec(sql)
+    }else {
+        return ''
     }
 }
 
