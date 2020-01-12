@@ -1,3 +1,14 @@
+# node 博客
+
+### 安装依赖
+`npm install`
+
+### 启动项目
+`npm run dev`
+
+### 项目打包
+`npm run pro`
+
 ## 项目结构说明
 ```
 blog-node/
