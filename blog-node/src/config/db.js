@@ -5,20 +5,20 @@ let MYSQL_CONFIG
 
 if (env === 'dev') {
     MYSQL_CONFIG = {
-        host: 'localhost',
-        user: 'root',
+        host: '47.106.144.123',
+        user: 'blog-node',
         password: 'lyzw',
-        port: '3306',
+        port: '3344',
         database: 'blog-node'
     }
 }
 
 if (env === 'production') {
     MYSQL_CONFIG = {
-        host: 'localhost',
-        user: 'root',
+        host: '47.106.144.123',
+        user: 'blog-node',
         password: 'lyzw',
-        port: '3306',
+        port: '3344',
         database: 'blog-node'
     }
 }
