@@ -30,37 +30,28 @@ const getDetail = query => {
 // 添加文章
 const addBlog = body => {
     // 获取请求参数
-    const title = body.title || ''
-    const content = body.content || ''
-    // 先返回假数据
-    return {
-        code: '0000',
-        data: '添加成功'
-    }
+    const author = '龙影之舞'
+    const { title, desc, keyword, content } = body
+    let sql = `
+        insert into articles (title, \`desc\`, keyword, content, author) values 
+        ('${title}', '${desc}', '${keyword}', '${content}', '${author}');
+    `
+    return exec(sql)
 }
 
 // 删除文章
 const delBlog = body => {
     // 获取请求参数
-    const id = body.id || ''
-    // 先返回假数据
-    return {
-        code: '0000',
-        data: '删除成功'
-    }
+    const { id } = body
+    let sql = `delete from articles where id = ${id};`
+    return exec(sql)
 }
 
 // 修改文章
 const getUpdate = body => {
-    // 获取请求参数
-    const id = body.id || ''
-    const title = body.title || ''
-    const content = body.content || ''
-    // 先返回假数据
-    return {
-        code: '0000',
-        data: '更新成功'
-    }
+    const { id, title, desc, keyword, content } = body
+    let sql = ` update articles set title='${title}', \`desc\`='${desc}', keyword='${keyword}', content='${content}' where id='${id}'; `
+    return exec(sql)
 }
 
 module.exports = {
