@@ -14,7 +14,9 @@ const login = body => {
     }
     sql += `;`
     
-    return exec(sql)
+    return exec(sql).then(row => {
+        return row[0]
+    })
 }
 
 module.exports = {
