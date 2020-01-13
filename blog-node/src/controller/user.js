@@ -13,7 +13,7 @@ const login = body => {
         sql += `and password='${password}'`
     }
     sql += `;`
-    console.log('-body',body,sql)
+    
     return exec(sql)
 }
 
