@@ -12,7 +12,6 @@ const exec = sql => {
     return new Promise((resolve, reject) => {
         // 查询
         conn.query(sql, (err, result) => {
-            console.log(result);
             if (err) {
                 reject(err)
             }

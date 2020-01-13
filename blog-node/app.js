@@ -23,7 +23,18 @@ const getPostData = req => {
 
 const serverHandle = async (req, res) => {
     // 设置返回格式
-    res.setHeader('Content-type', 'application/json')
+    res.setHeader('Content-type', 'application/json;charset=utf-8')
+
+    // 解析cookie
+    req.cookie = {}
+    const cookieStr = req.headers['cookie'] || ''
+    cookieStr.split(';').forEach(item => {
+        if(!item) return
+        const arr = item.split('=')
+        req.cookie[arr[0]] = arr[1]
+    });
+    console.log('cookie', req.cookie)
+
 
     // 获取路径
     const url = req.url.split('?')
