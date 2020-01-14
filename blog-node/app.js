@@ -31,7 +31,7 @@ const serverHandle = async (req, res) => {
     cookieStr.split(';').forEach(item => {
         if(!item) return
         const arr = item.split('=')
-        req.cookie[arr[0]] = arr[1]
+        req.cookie[arr[0].trim()] = arr[1].trim()
     });
     console.log('cookie', req.cookie)
 
