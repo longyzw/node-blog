@@ -1,6 +1,13 @@
 const { login } = require('../controller/user')
 const { SuccessModel, ErrorModel } = require('../model/resModel')
 
+// 设置cookie过期时间
+const getCookieExpires = () => {
+    let d = new Date()
+    d.setTime(d.getTime() + 24 * 60 * 60 * 1000)
+    return d.toGMTString()
+}
+
 const handleUserRouter = (req, res) => {
     // 接收方法、路径、参数
     const { method, path, query, body, cookie } = req
@@ -10,7 +17,7 @@ const handleUserRouter = (req, res) => {
         if (path === '/api/user/login') {
             return login(query).then(data => {
                 if(data && data.username) {
-                    res.setHeader('Set-cookie',`username=${data.username}; path=/`)
+                    res.setHeader('Set-cookie',`username=${data.username}; path=/; httpOnly; expires=${getCookieExpires()}`)
                     return getResult(Promise.resolve('登录成功'))
                 }
                 res.setHeader('Set-cookie',`username=''`)
