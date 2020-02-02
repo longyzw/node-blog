@@ -21,7 +21,9 @@ const getDetail = query => {
     const { id } = query
     if(id) {
         let sql = `select * from articles where id = ${id};`
-        return exec(sql)
+        return exec(sql).then(row => {
+            return row[0]
+        })
     }else {
         return ''
     }
@@ -30,8 +32,7 @@ const getDetail = query => {
 // 添加文章
 const addBlog = body => {
     // 获取请求参数
-    const author = '龙影之舞'
-    const { title, desc, keyword, content } = body
+    const { title, desc, keyword, content, author } = body
     let sql = `
         insert into articles (title, \`desc\`, keyword, content, author) values 
         ('${title}', '${desc}', '${keyword}', '${content}', '${author}');
@@ -42,8 +43,8 @@ const addBlog = body => {
 // 删除文章
 const delBlog = body => {
     // 获取请求参数
-    const { id } = body
-    let sql = `delete from articles where id = ${id};`
+    const { id, author } = body
+    let sql = `delete from articles where id = ${id} and author = ${author};`
     return exec(sql)
 }
 
