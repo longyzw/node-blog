@@ -1,4 +1,5 @@
-const exec = require('../db/mysql')
+const xss = require('xss')
+const { exec } = require('../db/mysql')
 
 // 获取文章列表
 const getList = query => {
@@ -32,7 +33,9 @@ const getDetail = query => {
 // 添加文章
 const addBlog = body => {
     // 获取请求参数
-    const { title, desc, keyword, content, author } = body
+    let { title, desc, keyword, content, author } = body
+    title = xss(title)
+    content = xss(content)
     let sql = `
         insert into articles (title, \`desc\`, keyword, content, author) values 
         ('${title}', '${desc}', '${keyword}', '${content}', '${author}');
@@ -44,13 +47,15 @@ const addBlog = body => {
 const delBlog = body => {
     // 获取请求参数
     const { id, author } = body
-    let sql = `delete from articles where id = ${id} and author = ${author};`
+    let sql = `delete from articles where id = ${id} and author = '${author}';`
     return exec(sql)
 }
 
 // 修改文章
 const getUpdate = body => {
-    const { id, title, desc, keyword, content } = body
+    let { id, title, desc, keyword, content } = body
+    title = xss(title)
+    content = xss(content)
     let sql = ` update articles set title='${title}', \`desc\`='${desc}', keyword='${keyword}', content='${content}' where id='${id}'; `
     return exec(sql)
 }
