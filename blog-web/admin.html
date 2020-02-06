@@ -125,9 +125,13 @@
             }
 
             if (confirm('确定删除？')) {
-                const url = '/api/blog/del?id=' + $target.attr('data-id')
-                post(url).then(res => {
-                    if (res.errno !== 0) {
+                const url = '/api/blog/del'
+                const data = {
+                    id: $target.attr('data-id') * 1
+                }
+                post(url, data).then(res => {
+                    console.log('del:',res)
+                    if (res.code !== '0000') {
                         alert('操作错误')
                         return
                     }
