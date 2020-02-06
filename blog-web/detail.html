@@ -81,7 +81,7 @@
             // 显示数据
             const data = res.data || {}
             console.log('detail,',data)
-            $title.text(data.title)
+            $title.html(data.title)
             $content.text(data.content)
             $infoContainer.append($(`
                 <span>
