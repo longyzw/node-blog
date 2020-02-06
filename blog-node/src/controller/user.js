@@ -1,18 +1,17 @@
-const exec = require('../db/mysql')
+const { exec, escape } = require('../db/mysql')
+const { genPassword } = require('./../utils/crypto')
 
 // 用户登录
 const login = body => {
     // 获取请求参数
-    const { username, password } = body
+    let { username, password } = body
+    // 生成加密密码
+    password = genPassword(password)
+    
+    username = escape(username)
+    password = escape(password)
     // 编写查询条件
-    let sql = `select * from users where 1=1 `
-    if(username) {
-        sql += `and username='${username}' `
-    }
-    if(password) {
-        sql += `and password='${password}'`
-    }
-    sql += `;`
+    let sql = `select * from users where username=${username} and password=${password};`
     
     return exec(sql).then(row => row[0])
 }
