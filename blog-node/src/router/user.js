@@ -18,7 +18,7 @@ const handleUserRouter = (req, res) => {
                     set(req.sessionId, req.session)
                     return getResult(Promise.resolve('登录成功'))
                 }
-                return getResult(Promise.reject('尚未登录'))
+                return getResult(Promise.reject('登录失败 '))
             })
         }
     }
