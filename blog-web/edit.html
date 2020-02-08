@@ -98,10 +98,11 @@
             const title = $textTitle.val()
             const content = $textContent.val()
 
-            const url = '/api/blog/update?id=' + id
+            const url = '/api/blog/update'
             const data = {
                 title,
-                content
+                content,
+                id
             }
             post(url, data).then(res => {
                 if (res.code !== '0000') {
