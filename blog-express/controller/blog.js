@@ -33,7 +33,7 @@ const addBlog = body => {
     // 获取请求参数
     let { title, des, keyword, content, author } = body
     if(!des) des = ''
-    if(!keyword) des = ''
+    if(!keyword) keyword = ''
     title = xss(title)
     content = xss(content)
     let sql = `
