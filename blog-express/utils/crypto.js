@@ -1,6 +1,6 @@
 const crypto = require('crypto')
 
-// 秘钥
+// 密钥
 const SECRET_KEY = 'longyzw_0817#'
 
 // md5 加密

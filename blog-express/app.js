@@ -2,6 +2,8 @@ var createError = require('http-errors');
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const path = require('path')
+const fs = require('fs')
 const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
 
@@ -10,7 +12,22 @@ var blogRouter = require('./routes/blog');
 
 var app = express();
 
-app.use(logger('dev'));
+// 日志环境区分
+const ENV = process.env.NODE_ENV
+if (ENV != 'production') {
+  // 开发/测试环境
+  app.use(logger('dev'));
+} else {
+  // 线上环境
+  const logFileName = path.join(__dirname, 'logs', 'access.log')
+  const writeStream = fs.createWriteStream(logFileName, {
+    flags: 'a'
+  })
+  app.use(logger('combined', {
+    stream: writeStream
+  }));
+}
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
