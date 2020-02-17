@@ -43,17 +43,18 @@
     </table>
 
     <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/util.js"></script>
     <script>
         // 发送 get 请求
         function get(url) {
-            return $.get(url)
+            return $.get(path+url)
         }
 
         // 发送 post 请求
         function post(url, data = {}) {
             return $.ajax({
                 type: 'post',
-                url,
+                url: path+url,
                 data: JSON.stringify(data),
                 contentType: "application/json",
             })

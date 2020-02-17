@@ -37,10 +37,11 @@
     <script src="./js/jquery-3.4.1.min.js"></script>
     <script src="./js/moment.min.js"></script>
     <script src="./js/moment-with-locales.min.js"></script>
+    <script src="./js/util.js"></script>
     <script>
         // 发送 get 请求
         function get(url) {
-            return $.get(url)
+            return $.get(path+url)
         }
 
         // 显示格式化的时间
