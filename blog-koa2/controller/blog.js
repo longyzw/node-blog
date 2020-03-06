@@ -17,7 +17,7 @@ const getList = async query => {
     return await exec(sql)
 }
 
-// 获取文章详情
+// 获取文章详情 
 const getDetail = async query => {
     let { id } = query
     if(id) {
