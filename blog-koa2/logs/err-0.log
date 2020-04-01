@@ -1,0 +1,102 @@
+server error TypeError: Cannot read property 'length' of undefined
+    at login (D:\codeSave\Node\node-blog\blog-koa2\controller\user.js:17:31)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async D:\codeSave\Node\node-blog\blog-koa2\routes\user.js:9:23 {
+  request: {
+    method: 'POST',
+    url: '/api/user/login',
+    header: {
+      host: '192.168.1.6:3000',
+      connection: 'keep-alive',
+      'content-length': '40',
+      accept: 'application/json, text/plain, */*',
+      'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
+      'content-type': 'application/json',
+      origin: 'http://localhost:8080',
+      referer: 'http://localhost:8080/axios',
+      'accept-encoding': 'gzip, deflate',
+      'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8'
+    }
+  },
+  response: {
+    status: 404,
+    message: 'Not Found',
+    header: [Object: null prototype] {
+      vary: 'Origin',
+      'access-control-allow-origin': 'http://localhost:8080'
+    }
+  },
+  app: { subdomainOffset: 2, proxy: false, env: 'production' },
+  originalUrl: '/api/user/login',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>'
+}
+server error TypeError: Cannot read property 'length' of undefined
+    at login (D:\codeSave\Node\node-blog\blog-koa2\controller\user.js:17:31)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async D:\codeSave\Node\node-blog\blog-koa2\routes\user.js:9:23 {
+  request: {
+    method: 'POST',
+    url: '/api/user/login',
+    header: {
+      host: '192.168.1.6:3000',
+      connection: 'keep-alive',
+      'content-length': '40',
+      accept: 'application/json, text/plain, */*',
+      'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
+      'content-type': 'application/json',
+      origin: 'http://localhost:8080',
+      referer: 'http://localhost:8080/axios',
+      'accept-encoding': 'gzip, deflate',
+      'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8'
+    }
+  },
+  response: {
+    status: 404,
+    message: 'Not Found',
+    header: [Object: null prototype] {
+      vary: 'Origin',
+      'access-control-allow-origin': 'http://localhost:8080'
+    }
+  },
+  app: { subdomainOffset: 2, proxy: false, env: 'production' },
+  originalUrl: '/api/user/login',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>'
+}
+server error TypeError: Cannot read property 'length' of undefined
+    at login (D:\codeSave\Node\node-blog\blog-koa2\controller\user.js:17:31)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async D:\codeSave\Node\node-blog\blog-koa2\routes\user.js:9:23 {
+  request: {
+    method: 'POST',
+    url: '/api/user/login',
+    header: {
+      host: '192.168.1.6:3000',
+      connection: 'keep-alive',
+      'content-length': '40',
+      accept: 'application/json, text/plain, */*',
+      'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
+      'content-type': 'application/json',
+      origin: 'http://localhost:8080',
+      referer: 'http://localhost:8080/axios',
+      'accept-encoding': 'gzip, deflate',
+      'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8'
+    }
+  },
+  response: {
+    status: 404,
+    message: 'Not Found',
+    header: [Object: null prototype] {
+      vary: 'Origin',
+      'access-control-allow-origin': 'http://localhost:8080'
+    }
+  },
+  app: { subdomainOffset: 2, proxy: false, env: 'production' },
+  originalUrl: '/api/user/login',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>'
+}

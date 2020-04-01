@@ -13,7 +13,7 @@ if (env === 'dev') {
         database: 'blog-node'
     }
     REDIS_CONFIG = {
-        host: '127.0.0.1',
+        host: '47.106.144.123',
         port: 6379
     }
 }
