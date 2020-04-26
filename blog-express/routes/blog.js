@@ -13,6 +13,7 @@ const loginCheck = require('./../middleware/loginCheck')
 // 博客列表
 router.get('/list', (req, res, next) => {
   if(req.query.isadmin) {
+    console.log('session:',req.session)
     // 管理员页面
     if(req.session.username == null) {
       res.json(new ErrorModel('0001', '请先登录'))

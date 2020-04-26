@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors')
 const path = require('path')
 const fs = require('fs')
 const session = require('express-session')
@@ -11,6 +12,27 @@ var userRouter = require('./routes/user');
 var blogRouter = require('./routes/blog');
 
 var app = express();
+
+let apath = ''
+app.use(function (req, res, next) {
+  console.log('--',req.headers.origin)
+  apath = req.headers.origin
+  // apath = 
+  next();
+});
+
+app.use(cors({
+  credentials: true,
+  origin: apath || 'http://192.168.0.116:8081', // web前端服务器地址
+}))
+
+app.use('*', function (req, res, next) {
+  if(req.method=="OPTIONS") {
+    res.sendStatus(200);/*让options请求快速返回*/
+  } else {
+    next();
+  }
+});
 
 // 日志环境区分
 const ENV = process.env.NODE_ENV
@@ -38,6 +60,8 @@ const sessionStore = new RedisStore({
 })
 app.use(session({
   secret: 'longyzw_1995#',
+  resave: false,
+  saveUninitialized: true,
   cookie: {
     // path: '/', // 默认值
     // httpOnly: true, // 默认值
@@ -50,12 +74,12 @@ app.use('/api/user', userRouter);
 app.use('/api/blog', blogRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

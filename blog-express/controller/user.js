@@ -3,6 +3,8 @@ const { genPassword } = require('./../utils/crypto')
 
 // 用户登录
 const login = body => {
+
+    console.log('-=====',body)
     // 获取请求参数
     let { username, password } = body
     // 生成加密密码
