@@ -20,7 +20,27 @@ const { REDIS_CONFIG } = require('./config/db')
 onerror(app)
 
 // 处理跨域
-app.use(cors())
+// app.use(cors())
+
+app.use(async (ctx, next) => {
+  ctx.set('Access-Control-Allow-Origin', ctx.request.header.origin);
+  // ctx.set('Access-Control-Allow-Headers', "Content-Type");
+  ctx.set('Content-Type', "*");
+  ctx.set('Access-Control-Allow-Credentials', true);
+  await next();
+ });
+  
+ //防止每次请求都返回Access-Control-Allow-Methods以及Access-Control-Max-Age，
+ //这两个响应头其实是没有必要每次都返回的，只是第一次有预检的时候返回就可以了。
+ app.use(async (ctx, next) => {
+  if (ctx.method === 'OPTIONS') {
+   ctx.set('Access-Control-Allow-Methods', 'PUT,DELETE,POST,GET');
+   ctx.set('Access-Control-Max-Age', 3600 * 24);
+   ctx.body = '';
+  }
+  await next();
+ });
+
 
 // middlewares
 app.use(bodyparser({
@@ -55,13 +75,17 @@ if (ENV != 'production') {
 
 // 处理session和Redis
 app.keys = ['longyzw_1995#']
+console.log(REDIS_CONFIG)
 app.use(session({
+  key: 'lyzw.sid', // cookie name 默认是 koa.sid
+  prefix: 'lyzw:sess:', // redis key 的前缀，默认是 koa:sess:
   // 配置 cookie
   cookie: {
     path: '/',
     httpOnly: true,
     maxAge: 24 * 60 * 60 * 1000
   },
+  // ttl:24*60*60*1000,
   // 配置 Redis
   store: redisStore({
     all: `${REDIS_CONFIG.host}:${REDIS_CONFIG.port}`

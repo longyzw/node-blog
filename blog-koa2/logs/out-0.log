@@ -1,0 +1,73 @@
+  <-- POST /api/user/login
+login: [
+  RowDataPacket {
+    id: 1,
+    username: 'lyzw',
+    password: 'ae5e7a1c6d0b4cce12b4ba69a2f5f936',
+    realname: '龙影之舞',
+    create_time: 2019-11-01T08:16:48.000Z,
+    update_time: 2020-02-06T13:16:14.000Z
+  }
+]
+  xxx POST /api/user/login 500 209ms -
+  <-- POST /api/user/login
+login: [
+  RowDataPacket {
+    id: 1,
+    username: 'lyzw',
+    password: 'ae5e7a1c6d0b4cce12b4ba69a2f5f936',
+    realname: '龙影之舞',
+    create_time: 2019-11-01T08:16:48.000Z,
+    update_time: 2020-02-06T13:16:14.000Z
+  }
+]
+  xxx POST /api/user/login 500 95ms -
+  <-- GET /api/blog/list
+GET /api/blog/list - 93ms
+  --> GET /api/blog/list 200 95ms 1.18kb
+  <-- POST /api/user/login
+login: [
+  RowDataPacket {
+    id: 1,
+    username: 'lyzw',
+    password: 'ae5e7a1c6d0b4cce12b4ba69a2f5f936',
+    realname: '龙影之舞',
+    create_time: 2019-11-01T08:16:48.000Z,
+    update_time: 2020-02-06T13:16:14.000Z
+  }
+]
+  xxx POST /api/user/login 500 94ms -
+{ host: '47.106.144.123', port: 6379 }
+  <-- GET /api/blog/list?isadmin=1
+check: {
+  cookie: {
+    path: '/',
+    httpOnly: true,
+    maxAge: 86400000,
+    overwrite: true,
+    signed: true
+  }
+} undefined
+GET /api/blog/list?isadmin=1 - 8ms
+  --> GET /api/blog/list?isadmin=1 200 15ms 50b
+  <-- OPTIONS /api/user/login
+OPTIONS /api/user/login - 1ms
+  --> OPTIONS /api/user/login 200 4ms 0b
+  <-- OPTIONS /api/user/login
+OPTIONS /api/user/login - 1ms
+  --> OPTIONS /api/user/login 200 2ms 0b
+  <-- OPTIONS /api/user/login
+OPTIONS /api/user/login - 1ms
+  --> OPTIONS /api/user/login 200 3ms 0b
+  <-- OPTIONS /api/user/login
+OPTIONS /api/user/login - 1ms
+  --> OPTIONS /api/user/login 200 2ms 0b
+{ host: '47.106.144.123', port: 6379 }
+  <-- OPTIONS /api/user/login
+OPTIONS /api/user/login - 4ms
+  --> OPTIONS /api/user/login 200 11ms 0b
+{ host: '47.106.144.123', port: 6379 }
+  <-- OPTIONS /api/user/login
+OPTIONS /api/user/login - 5ms
+  --> OPTIONS /api/user/login 200 11ms 0b
+{ host: '47.106.144.123', port: 6379 }

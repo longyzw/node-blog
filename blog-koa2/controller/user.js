@@ -12,8 +12,13 @@ const login = async body => {
     password = escape(password)
     // 编写查询条件
     let sql = `select * from users where username=${username} and password=${password};`
+
     const rows = await exec(sql)
-    return rows[0] || {}
+    console.log('login:',rows)
+    return JSON.parse(JSON.stringify(rows))[0]
+    // let res = JSON.parse(JSON.stringify(rows))
+    // console.log('login:',res)
+    // return res[0]
 }
 
 module.exports = {

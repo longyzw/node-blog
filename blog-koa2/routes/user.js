@@ -12,6 +12,7 @@ router.post('/login', async (ctx, next) => {
         ctx.session.username = loginData.username
         ctx.session.realname = loginData.realname
 
+        console.log('==',ctx.session)
         ctx.body = new SuccessModel('0000', '登录成功')
         return
     }

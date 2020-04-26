@@ -14,6 +14,7 @@ router.prefix("/api/blog")
 // 博客列表
 router.get('/list', async (ctx, next) => {
     if (ctx.query.isadmin) {
+        console.log('check:',ctx.session,ctx.cookie)
         // 管理员页面
         if (ctx.session.username == null) {
             ctx.body = new ErrorModel('0001', '请先登录')
